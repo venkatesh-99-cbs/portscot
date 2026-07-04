@@ -1,0 +1,50 @@
+{
+    "target": "127.0.0.1",
+    "start_time": "2026-07-04T17:49:17.987003",
+    "end_time": "2026-07-04T17:49:18.012375",
+    "hosts": [
+        {
+            "address": "127.0.0.1",
+            "hostname": null,
+            "status": "unknown",
+            "os_name": null,
+            "os_accuracy": null,
+            "services": [
+                {
+                    "port": 22,
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service_name": null,
+                    "product": null,
+                    "version": null,
+                    "extrainfo": null,
+                    "banner": "SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.14",
+                    "tls_info": null
+                }
+            ],
+            "findings": [
+                {
+                    "title": "Information Exposure in Banner",
+                    "description": "Service on port 22 exposes version information in its banner: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.14",
+                    "severity": "info",
+                    "remediation": "Configure the service to hide version information in banners.",
+                    "plugin_name": "InsecureBanner"
+                }
+            ],
+            "last_seen": "2026-07-04T17:49:17.989036"
+        }
+    ],
+    "summary": {
+        "total_hosts": 1,
+        "total_findings": 1
+    },
+    "findings": [
+        {
+            "title": "Information Exposure in Banner",
+            "description": "Service on port 22 exposes version information in its banner: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.14",
+            "severity": "info",
+            "remediation": "Configure the service to hide version information in banners.",
+            "plugin_name": "InsecureBanner"
+        }
+    ]
+}

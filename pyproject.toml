@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sentinel-scan"
+version = "0.1.0"
+description = "A professional, modular, cross-platform network security auditing framework"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "click",
+    "pydantic",
+    "aiohttp",
+    "scapy",
+    "jinja2",
+    "fastapi",
+    "uvicorn",
+]
+
+[project.scripts]
+sentinel-scan = "sentinel_scan.cli.main:main"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
