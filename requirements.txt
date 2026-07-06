@@ -1,0 +1,10 @@
+click
+pydantic
+aiohttp
+scapy
+jinja2
+python-daemon
+fastapi
+uvicorn
+pytest
+pytest-asyncio
