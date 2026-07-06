@@ -12,6 +12,7 @@ SentinelScan is a professional, modular, cross-platform network security auditin
 - **Banner Analysis:** Extract and analyze service banners.
 - **TLS Inspection:** Inspect SSL/TLS certificates and configurations.
 - **HTTP Enumeration:** Enumerate web services and grab headers.
+- **Professional Nmap Integration:** High-fidelity scanning using Nmap for service versioning and OS fingerprinting, optimized for professional environments like Kali Linux.
 - **OS Fingerprinting:** Heuristic operating system estimation based on TTL and banners.
 - **Plugin System:** Non-destructive plugin architecture for safe security checks.
 - **REST API:** Control scans and retrieve results via a web interface.
@@ -81,12 +82,18 @@ sentinel-scan 192.168.1.0/24 --output report.md --format md
 sentinel-scan 10.0.0.0/16 --concurrency 500 --verbose
 ```
 
+**Professional Nmap-based Scan:**
+```bash
+sentinel-scan 192.168.1.1 --use-nmap --output report.json --format json
+```
+
 **Options:**
 - `targets`: One or more IP addresses, CIDR ranges, or hostnames.
 - `--concurrency`: Number of concurrent scan tasks (default: 100).
 - `--output`: File path to save the generated report.
 - `--format`: Report format (`json`, `txt`, `csv`, `md`, `xml`).
 - `--plugins-dir`: Custom directory to load plugins from.
+- `--use-nmap`: Use Nmap for professional high-fidelity scanning (requires Nmap installed on the system).
 - `--verbose`: Enable detailed debug logging.
 
 ### REST API
@@ -102,7 +109,7 @@ uvicorn sentinel_scan.api.app:app --host 0.0.0.0 --port 8000
 ```bash
 curl -X POST "http://localhost:8000/scan" \
      -H "Content-Type: application/json" \
-     -d '{"targets": ["127.0.0.1"], "concurrency": 50}'
+     -d '{"targets": ["127.0.0.1"], "concurrency": 50, "use_nmap": true}'
 ```
 
 **Retrieve Scan Results:**

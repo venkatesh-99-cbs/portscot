@@ -1,0 +1,34 @@
+{
+    "target": "127.0.0.1",
+    "start_time": "2026-07-06T10:18:51.781275",
+    "end_time": "2026-07-06T10:18:53.104965",
+    "hosts": [
+        {
+            "address": "127.0.0.1",
+            "hostname": null,
+            "status": "up",
+            "os_name": null,
+            "os_accuracy": null,
+            "services": [
+                {
+                    "port": 22,
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service_name": "ssh",
+                    "product": "OpenSSH",
+                    "version": "9.6p1 Ubuntu 3ubuntu13.14",
+                    "extrainfo": "Ubuntu Linux; protocol 2.0",
+                    "banner": null,
+                    "tls_info": null
+                }
+            ],
+            "findings": [],
+            "last_seen": "2026-07-06T10:18:51.783218"
+        }
+    ],
+    "summary": {
+        "total_hosts": 1,
+        "total_findings": 0
+    },
+    "findings": []
+}

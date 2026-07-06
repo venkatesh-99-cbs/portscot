@@ -8,6 +8,7 @@ from sentinel_scan.modules.udp_scanner import UDPScanner
 from sentinel_scan.modules.http_enum import HTTPEnumeration
 from sentinel_scan.modules.tls_inspector import TLSInspector
 from sentinel_scan.modules.os_fingerprinter import OSFingerprinter
+from sentinel_scan.modules.nmap_scanner import NmapScanner
 from sentinel_scan.core.plugin_loader import PluginLoader
 from sentinel_scan.reporting.reporter import Reporter
 from sentinel_scan.utils.logger import setup_logging
@@ -18,8 +19,9 @@ from sentinel_scan.utils.logger import setup_logging
 @click.option('--output', help='Output file path.')
 @click.option('--format', type=click.Choice(['json', 'txt', 'csv', 'md', 'xml']), default='txt', help='Output format.')
 @click.option('--plugins-dir', default='sentinel_scan/plugins', help='Directory to load plugins from.')
+@click.option('--use-nmap', is_flag=True, help='Use Nmap for professional high-fidelity scanning.')
 @click.option('--verbose', is_flag=True, help='Enable verbose logging.')
-def main(targets, concurrency, output, format, plugins_dir, verbose):
+def main(targets, concurrency, output, format, plugins_dir, use_nmap, verbose):
     """SentinelScan - Professional Network Security Auditing Framework"""
     setup_logging(level=logging.DEBUG if verbose else logging.INFO)
     if not targets:
@@ -30,11 +32,14 @@ def main(targets, concurrency, output, format, plugins_dir, verbose):
         engine = ScannerEngine(concurrency=concurrency)
 
         # Add core modules
-        engine.add_module(TCPScanner())
-        engine.add_module(UDPScanner())
-        engine.add_module(HTTPEnumeration())
-        engine.add_module(TLSInspector())
-        engine.add_module(OSFingerprinter())
+        if use_nmap:
+            engine.add_module(NmapScanner())
+        else:
+            engine.add_module(TCPScanner())
+            engine.add_module(UDPScanner())
+            engine.add_module(HTTPEnumeration())
+            engine.add_module(TLSInspector())
+            engine.add_module(OSFingerprinter())
 
         # Load plugins
         plugins = PluginLoader.load_plugins(plugins_dir)
