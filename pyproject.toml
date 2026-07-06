@@ -16,6 +16,7 @@ dependencies = [
     "jinja2",
     "fastapi",
     "uvicorn",
+    "python-nmap",
 ]
 
 [project.scripts]
